@@ -39,6 +39,7 @@ with clickhouse_connect.get_client(database='article') as db:
 
         if a:
             data.append(a)
+            error_limit = 10
         else:
             error_limit -= 1
         
