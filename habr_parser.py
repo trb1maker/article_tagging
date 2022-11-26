@@ -6,9 +6,16 @@ import datetime
 
 
 def parse_view(view: str) -> int:
-    k = 1000 if 'K' in view else 1
+    k = 1
+    
+    if 'K' in view:
+        k = 1_000
+        view = view.replace('K', '')
+    elif 'M' in view:
+        k = 1_000_000
+        view = view.replace('M', '')
 
-    return int(float(view.replace('K', '')) * k)
+    return int(float(view) * k)
 
 
 Article = namedtuple('Article', ('id',
